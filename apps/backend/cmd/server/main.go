@@ -29,7 +29,7 @@ func main() {
 	//Server
 	e := echo.New()
 
-	log.Printf("Server started at %d", cfg.App.Port)
+	log.Printf("Server started at %s", fmt.Sprintf(":%d", cfg.App.Port))
 	if err := e.Start(fmt.Sprintf(":%d", cfg.App.Port)); err != nil {
 		log.Fatal("Shutting down the server due to:", err)
 	}
