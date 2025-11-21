@@ -2,7 +2,9 @@ package config
 
 import (
 	"fmt"
+	"strings"
 
+	"github.com/joho/godotenv"
 	"github.com/spf13/viper"
 )
 
@@ -26,6 +28,10 @@ type DBConfig struct {
 }
 
 func LoadConfig(env string) (*Config, error) {
+	if err := godotenv.Load(".env"); err != nil {
+		return nil, fmt.Errorf("failed to read env file: %w", err)
+	}
+
 	viper.SetConfigName(fmt.Sprintf("config.%s", env))
 	viper.AddConfigPath("./config")
 	viper.AddConfigPath("../../config")
@@ -35,9 +41,13 @@ func LoadConfig(env string) (*Config, error) {
 		return nil, fmt.Errorf("failed to read config: %w", err)
 	}
 
+	viper.AutomaticEnv()
+	viper.SetEnvKeyReplacer(strings.NewReplacer(".", "_"))
+
 	var config Config
 	if err := viper.Unmarshal(&config); err != nil {
 		return nil, fmt.Errorf("failed to unmarshal config: %w", err)
 	}
+
 	return &config, nil
 }
