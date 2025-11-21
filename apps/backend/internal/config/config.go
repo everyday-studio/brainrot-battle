@@ -8,11 +8,21 @@ import (
 
 type Config struct {
 	App AppConfig `yaml:"app"`
+	DB  DBConfig  `yaml:"db"`
 }
 
 type AppConfig struct {
 	Port  int  `yaml:"port"`
 	Debug bool `yaml:"debug"`
+}
+
+type DBConfig struct {
+	Host     string `yaml:"host"`
+	Port     string `yaml:"port"`
+	User     string `yaml:"user"`
+	Password string `yaml:"password"`
+	DBname   string `yaml:"dbname"`
+	SSLMode  string `yaml:"sslmode"`
 }
 
 func LoadConfig(env string) (*Config, error) {
@@ -21,9 +31,13 @@ func LoadConfig(env string) (*Config, error) {
 	viper.AddConfigPath("../../config")
 	viper.SetConfigType("yaml")
 
+	if err := viper.ReadInConfig(); err != nil {
+		return nil, fmt.Errorf("failed to read config: %w", err)
+	}
+
 	var config Config
 	if err := viper.Unmarshal(&config); err != nil {
-		return nil, fmt.Errorf("Failed to unmarshal config: %w", err)
+		return nil, fmt.Errorf("failed to unmarshal config: %w", err)
 	}
 	return &config, nil
 }
