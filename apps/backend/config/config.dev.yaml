@@ -1,10 +1,11 @@
 app:
-  port: 8080               # TODO_APP_PORT
+  port: 8080               # ENV_OVERRIDE
   debug: false
 
 db:
-  host: "localhost"        # TODO_ENV_OVERRIDE
-  port: 5432               # TODO_ENV_OVERRIDE
-  user: "dev_user"         # TODO_ENV_OVERRIDE
+  host: "localhost"        # ENV_OVERRIDE
+  port: 5432               # ENV_OVERRIDE
+  user: "dev_user"         # ENV_OVERRIDE
+  password: "root123!"     # ENV_OVERRIDE
   dbname: "dev_db"
   sslmode: "disable"
