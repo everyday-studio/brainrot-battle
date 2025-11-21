@@ -31,6 +31,6 @@ func main() {
 
 	log.Printf("Server started at %s", fmt.Sprintf(":%d", cfg.App.Port))
 	if err := e.Start(fmt.Sprintf(":%d", cfg.App.Port)); err != nil {
-		log.Fatal("Shutting down the server due to:", err)
+		log.Fatalf("Failed to start server: %v", err)
 	}
 }
