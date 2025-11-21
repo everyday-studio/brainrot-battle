@@ -6,6 +6,5 @@ db:
   host: "localhost"        # TODO_ENV_OVERRIDE
   port: 5432               # TODO_ENV_OVERRIDE
   user: "dev_user"         # TODO_ENV_OVERRIDE
-  password: "dev_password" # TODO_ENV_ONLY, DELETE THIS
   dbname: "dev_db"
   sslmode: "disable"
