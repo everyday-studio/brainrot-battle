@@ -7,5 +7,5 @@ db:
   port: 5432               # ENV_OVERRIDE
   user: "dev_user"         # ENV_OVERRIDE
   password: "root123!"     # ENV_OVERRIDE
-  dbname: "dev_db"
+  dbname: "bbt_db"
   sslmode: "disable"

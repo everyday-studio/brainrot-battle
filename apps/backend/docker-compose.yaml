@@ -1,10 +1,10 @@
 services:
   db:
     image: postgres:18.1
-    enviornment:
+    environment:
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_DB: bbt_db
     volumes:
       - db_data:/var/lib/postgresql/data
 

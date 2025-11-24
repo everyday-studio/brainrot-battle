@@ -73,7 +73,7 @@ func (h *UserHandler) GetByID(c echo.Context) error {
 	}
 }
 
-func (h *UserHandler) GtAll(c echo.Context) error {
+func (h *UserHandler) GetAll(c echo.Context) error {
 	users, err := h.userUseCase.GetAll()
 	if err == nil {
 		return c.JSON(http.StatusOK, users)
